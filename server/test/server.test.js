@@ -11,7 +11,7 @@ describe('POST /todos', () => {
     it('should send data', (done) => {
         var text = 'any text';
         request(app)
-            .post('/todoPost')
+            .post('/todos')
             .send({text})
             .expect(200)
             .expect((res) => {
@@ -32,9 +32,9 @@ describe('POST /todos', () => {
 
     it('should not create any data', (done) => {
         request(app)
-        .post('/toddPost')
+        .post('/todos')
         .send({})
-        .expect(404)
+        .expect(400)
         .end((err, res) => {
             if(err) {
                 return done(err)
